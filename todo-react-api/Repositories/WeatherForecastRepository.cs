@@ -14,9 +14,9 @@ namespace todo_react_api.Repositories
         {
             _weatherForecastClient = weatherForecastClient;
         }
-        public async Task<CurrentWeatherForecast> GetCurrentWeatherForecast(string city, string units)
+        public async Task<CurrentWeatherForecast> GetCurrentWeatherForecast(string city)
         {
-            return await _weatherForecastClient.Get<CurrentWeatherForecast>($"&q={city}&units={units}");
+            return await _weatherForecastClient.Get<CurrentWeatherForecast>($"&q={city}&units=metric");
         }
     }
 }

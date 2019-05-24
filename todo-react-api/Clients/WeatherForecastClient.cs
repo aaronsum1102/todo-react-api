@@ -3,8 +3,6 @@ using System;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
-using todo_react_api.Models.Api;
-
 
 namespace todo_react_api.Clients
 {

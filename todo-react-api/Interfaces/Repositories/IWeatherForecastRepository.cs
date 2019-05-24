@@ -6,6 +6,6 @@ namespace todo_react_api.Interfaces.Respositories
 {
     public interface IWeatherForecastRepository
     {
-        Task<CurrentWeatherForecast> GetCurrentWeatherForecast(string city, string units);
+        Task<CurrentWeatherForecast> GetCurrentWeatherForecast(string city);
     }
 }

@@ -19,10 +19,10 @@ namespace todo_react_api.Controllers
         }
 
         [HttpGet]
-        [Route("api/weather/{units}/{city}")]
-        public async Task<CurrentWeatherForecast> GetCurrentWeatherForecast(string city, string units)
+        [Route("api/weather/{city}")]
+        public async Task<CurrentWeatherForecast> GetCurrentWeatherForecast(string city)
         {
-            var forecast = await _weatherForecastReposioty.GetCurrentWeatherForecast(city, units);
+            var forecast = await _weatherForecastReposioty.GetCurrentWeatherForecast(city);
             return forecast;
         }
     }
