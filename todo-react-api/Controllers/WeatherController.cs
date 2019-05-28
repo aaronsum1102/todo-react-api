@@ -9,6 +9,7 @@ using todo_react_api.Interfaces.Respositories;
 namespace todo_react_api.Controllers
 {
     [Produces("application/json")]
+    [Route("api/weather")]
     public class WeatherController : Controller
     {
         private readonly IWeatherForecastRepository _weatherForecastReposioty;
@@ -18,12 +19,15 @@ namespace todo_react_api.Controllers
             _weatherForecastReposioty = weatherForecastRepository;
         }
 
-        [HttpGet]
-        [Route("api/weather/{city}")]
-        public async Task<CurrentWeatherForecast> GetCurrentWeatherForecast(string city)
-        {
+        [HttpGet("{city}")]
+        public async Task<IActionResult> GetCurrentWeatherForecast(string city)
+        {   
             var forecast = await _weatherForecastReposioty.GetCurrentWeatherForecast(city);
-            return forecast;
+            if(string.IsNullOrEmpty(forecast.CityName))
+            {
+                return NotFound();
+            }
+            return Ok(forecast);
         }
     }
 }

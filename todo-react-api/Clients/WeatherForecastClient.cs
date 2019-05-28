@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Configuration;
 
 namespace todo_react_api.Clients
 {
@@ -12,10 +13,10 @@ namespace todo_react_api.Clients
         private readonly string _apiKey;
 
 
-        public WeatherForecastClient()
+        public WeatherForecastClient(IConfiguration config)
         {
             _httpClient = new HttpClient();
-            _apiKey = "APPID=25c444ff04044800774dcb20061dd989";
+            _apiKey = $"APPID={config["Weather:ServiceApiKey"]}";
             _httpClient.BaseAddress = new Uri("https://api.openweathermap.org/data/2.5/");
         }
 
